@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TypingAnimation } from "@/components/motion/animations";
 import { headlines, siteConfig } from "@/data/site";
@@ -66,7 +66,14 @@ export function HeroSection() {
           </FadeIn>
           <FadeIn delay={0.4}>
             <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
+              <a href={siteConfig.resumeUrl} target="_blank" rel="noopener noreferrer">
+                <Button size="lg">
+                  <Download className="h-4 w-4" />
+                  Download CV
+                </Button>
+              </a>
               <Button
+                variant="outline"
                 size="lg"
                 onClick={() =>
                   document

@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { navItems } from "@/data/site";
+import { Menu, X, Download } from "lucide-react";
+import { navItems, siteConfig } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { cn } from "@/lib/utils";
@@ -78,6 +78,17 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
+          <a
+            href={siteConfig.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:block"
+          >
+            <Button variant="outline" size="sm">
+              <Download className="h-4 w-4" />
+              Resume
+            </Button>
+          </a>
           <Button
             variant="ghost"
             size="icon"
@@ -113,6 +124,12 @@ export function Navbar() {
                   {item.label}
                 </button>
               ))}
+              <a href={siteConfig.resumeUrl} target="_blank" rel="noopener noreferrer" className="mt-2">
+                <Button variant="outline" className="w-full">
+                  <Download className="h-4 w-4" />
+                  Download Resume
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}
