@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,34 +8,26 @@ import { TypingAnimation } from "@/components/motion/animations";
 import { headlines, siteConfig } from "@/data/site";
 import { FadeIn } from "@/components/motion/fade-in";
 
-function HeroIllustration() {
+function HeroPhoto() {
   return (
-    <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-lg mx-auto aspect-square">
+    <div className="relative w-full max-w-[260px] sm:max-w-xs lg:max-w-sm mx-auto">
+      <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-primary/10 blur-2xl" />
+      <div className="absolute -bottom-8 -left-8 w-36 h-36 rounded-full bg-blue-500/10 blur-2xl" />
+
       <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0"
-      >
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-2xl bg-primary/10 border border-primary/20 rotate-12" />
-        <div className="absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-blue-500/10 border border-blue-500/20" />
-        <div className="absolute bottom-1/4 left-1/3 w-40 h-20 rounded-xl bg-slate-500/10 border border-slate-500/20 -rotate-6" />
-      </motion.div>
-      <motion.div
-        animate={{ y: [-10, 10, -10] }}
+        animate={{ y: [-8, 8, -8] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 flex items-center justify-center"
+        className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-br from-primary/20 to-slate-200/50 dark:to-slate-800/50 shadow-xl shadow-primary/10"
       >
-        <div className="w-56 h-56 rounded-3xl bg-gradient-to-br from-primary/20 to-blue-500/20 border border-primary/30 backdrop-blur-sm flex flex-col items-center justify-center text-center px-6">
-          <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-            Welcome to
-          </span>
-          <span className="mt-1 text-2xl font-bold bg-gradient-to-br from-primary to-blue-500 bg-clip-text text-transparent">
-            El&apos;s portfolio
-          </span>
-        </div>
+        <Image
+          src="/image/foto-portofolio.jpeg"
+          alt={siteConfig.name}
+          fill
+          sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 384px"
+          className="object-cover object-top"
+          priority
+        />
       </motion.div>
-      <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-primary/5 blur-xl" />
-      <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-blue-500/5 blur-xl" />
     </div>
   );
 }
@@ -89,7 +82,7 @@ export function HeroSection() {
         </div>
 
         <FadeIn direction="left" delay={0.3}>
-          <HeroIllustration />
+          <HeroPhoto />
         </FadeIn>
       </div>
     </section>

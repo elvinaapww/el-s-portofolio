@@ -21,7 +21,7 @@ export const experiences = [
   {
     company: "Eon Creative Digital",
     position: "Frontend Developer Intern",
-    duration: "March 2026 – Present",
+    duration: "March 2026 – Sep 2026",
     responsibilities: [
       "Developed responsive web interfaces from Figma designs.",
       "Integrated frontend with backend REST APIs.",
@@ -40,44 +40,5 @@ export const experiences = [
       "GitHub",
       "GitLab",
     ],
-  },
-  {
-    company: "Edukarya",
-    position: "Volunteer Educator & Curriculum Staff",
-    duration: "Volunteer",
-    responsibilities: [
-      "Designed educator guidebooks.",
-      "Developed syllabus and learning materials.",
-      "Created interactive educational activities.",
-      "Designed assessment materials.",
-      "Collaborated with curriculum team.",
-    ],
-    technologies: ["Curriculum Design", "Documentation", "Assessment"],
-  },
-] as const;
-
-export const aboutTimeline = [
-  {
-    year: "2022",
-    title: "Started Information Systems Studies",
-    description: "Began academic journey in Information Systems.",
-  },
-  {
-    year: "2025",
-    title: "System Development Engineer Intern",
-    description:
-      "Joined PT Denso Manufacturing Indonesia, bridging business needs with technical solutions.",
-  },
-  {
-    year: "2026",
-    title: "Frontend Developer Intern",
-    description:
-      "Expanded technical skills at Eon Creative Digital with modern web technologies.",
-  },
-  {
-    year: "Present",
-    title: "Final-Year Student",
-    description:
-      "Completing degree while building enterprise internal systems and analytical expertise.",
   },
 ] as const;

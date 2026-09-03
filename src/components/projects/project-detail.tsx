@@ -268,49 +268,57 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         </SectionBlock>
 
         <SectionBlock id="system-design" title="System Design">
-          <h3 className="font-semibold mb-4">UML Diagrams</h3>
-          <div className="grid sm:grid-cols-2 gap-4 mb-8">
-            {project.umlDiagrams.map((uml) => (
-              <div
-                key={uml.name}
-                className="p-5 rounded-xl border border-slate-200/60 dark:border-slate-800/60"
-              >
-                <h4 className="font-medium mb-2">{uml.name}</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  {uml.description}
-                </p>
-                {uml.image ? (
-                  <DiagramImage
-                    src={uml.image}
-                    alt={uml.name}
-                    onOpen={setLightboxImage}
-                    className="mt-4 h-56 border border-slate-200/60 dark:border-slate-800/60"
-                  />
-                ) : (
-                  <div className="mt-4 h-32 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm text-slate-400">
-                    {uml.name} Preview
+          {project.umlDiagrams.length > 0 && (
+            <>
+              <h3 className="font-semibold mb-4">UML Diagrams</h3>
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                {project.umlDiagrams.map((uml) => (
+                  <div
+                    key={uml.name}
+                    className="p-5 rounded-xl border border-slate-200/60 dark:border-slate-800/60"
+                  >
+                    <h4 className="font-medium mb-2">{uml.name}</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      {uml.description}
+                    </p>
+                    {uml.image ? (
+                      <DiagramImage
+                        src={uml.image}
+                        alt={uml.name}
+                        onOpen={setLightboxImage}
+                        className="mt-4 h-56 border border-slate-200/60 dark:border-slate-800/60"
+                      />
+                    ) : (
+                      <div className="mt-4 h-32 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm text-slate-400">
+                        {uml.name} Preview
+                      </div>
+                    )}
                   </div>
-                )}
+                ))}
               </div>
-            ))}
-          </div>
-          <h3 className="font-semibold mb-3">Database Design (ERD)</h3>
-          <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-            {project.erdDescription}
-          </p>
-          {project.erdImage ? (
-            <DiagramImage
-              src={project.erdImage}
-              alt="ERD Diagram"
-              onOpen={setLightboxImage}
-              className="h-72 mb-8 border border-slate-200/60 dark:border-slate-800/60"
-            />
-          ) : (
-            <div className="h-48 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm text-slate-400 mb-8">
-              ERD Diagram Preview
-            </div>
+            </>
           )}
-          <h3 className="font-semibold mb-3">Wireframes</h3>
+          {project.erdDescription && (
+            <>
+              <h3 className="font-semibold mb-3">Database Design (ERD)</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                {project.erdDescription}
+              </p>
+              {project.erdImage ? (
+                <DiagramImage
+                  src={project.erdImage}
+                  alt="ERD Diagram"
+                  onOpen={setLightboxImage}
+                  className="h-72 mb-8 border border-slate-200/60 dark:border-slate-800/60"
+                />
+              ) : (
+                <div className="h-48 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm text-slate-400 mb-8">
+                  ERD Diagram Preview
+                </div>
+              )}
+            </>
+          )}
+          <h3 className="font-semibold mb-3">Wireframe</h3>
           <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
             {project.wireframeDescription}
           </p>

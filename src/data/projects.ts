@@ -34,126 +34,108 @@ export const projects: Project[] = [
     role: "Full Stack Developer (Individual Project)",
     duration: "Feb 2025 - Apr 2025",
     shortDescription:
-      "Web-based inspection specification system that digitizes product/material/part QA forms and auto-generates data-injected PDF reports, eliminating the use of physical paper.",
+      "Internal digital platform that replaces manual PPAP and Inspection Standard paperwork with structured data entry, auto-generated PDF reports, and a 6-stage QC/QA approval workflow.",
     tags: ["CodeIgniter 3", "PHP", "MySQL", "FPDF", "FPDI"],
     background:
-      "The Quality Assurance department relied on printed inspection specification forms for products, materials, and parts. Every inspection required a physical form to be filled, filed, and manually archived, making records slow to retrieve and easy to lose.",
+      "PPAP (Production Part Approval Process) and Inspection Standard documents in the Quality Assurance department were created manually — filled by hand or typed separately — making the process inefficient, error-prone, and hard to trace through approval and revision history.",
     businessProblem:
-      "Heavy dependence on physical paperwork caused document loss, inconsistent form versions across inspectors, slow retrieval of historical inspection records, and unnecessary printing costs.",
+      "Manual PPAP and Inspection Standard paperwork caused inconsistent data entry, slow multi-level approval, and no reliable way to track document revisions or who approved what and when.",
     challenges: [
-      "Replicating the exact layout of existing printed inspection forms in digital PDF output",
-      "Injecting dynamic inspection data into pre-designed PDF templates using FPDI",
-      "Supporting multiple inspection types (product, material, part) each with different fields",
-      "Ensuring generated PDFs remained print-ready and visually consistent with the original paper forms",
+      "Modeling every field from the physical PPAP and Inspection Standard forms into a digital data structure",
+      "Reproducing the exact layout of the physical forms in PDF output using FPDF and FPDI",
+      "Implementing a strict, sequential 6-stage approval workflow across QC and QA divisions",
+      "Recording a complete change/audit history for full document traceability",
     ],
     objectives: [
-      "Digitize the inspection specification form creation process",
-      "Generate standardized, print-ready PDF output directly from the system",
-      "Provide fast, searchable access to historical inspection records",
-      "Reduce paper usage and manual filing across the QA department",
+      "Digitize PPAP and Inspection Standard document creation end-to-end",
+      "Generate print-ready PDF reports that mirror the original physical forms",
+      "Enforce a structured, multi-level approval workflow between QC and QA",
+      "Provide full audit traceability of document changes and approvals",
     ],
     solution:
-      "Built a CodeIgniter 3 web application, end-to-end as a solo developer, where QA staff fill inspection specification forms online. The system stores the data in MySQL, then uses FPDI to load the original PDF template and FPDF to inject the stored data directly onto the template, producing a ready-to-print PDF identical to the previous paper form.",
+      "Built a CodeIgniter 3 web application from scratch, solo, centered on full CRUD for PPAP and Inspection Standard data, PDF report generation via FPDF/FPDI, a 6-stage QC/QA approval workflow (Designed → Checked → Manager → General Manager), and a history log that tracks every change for auditability.",
     responsibilities: [
       "Requirement Gathering",
-      "System Design",
       "Database Design",
       "Frontend Development",
       "Backend Development",
-      "PDF Template & Injection Logic (FPDF/FPDI)",
+      "PDF Report Generation (FPDF/FPDI)",
+      "Approval Workflow Logic",
       "Testing",
       "Deployment",
     ],
     sdlcProcess: [
       {
-        phase: "Planning",
-        description: "Collected sample paper forms from QA staff and defined the scope for digitizing product, material, and part inspection specifications.",
+        phase: "Agile Methodology",
+        description: "Developed iteratively rather than in a single fixed sequence, since PPAP and Inspection Standard requirements from QC/QA kept changing as the system was built.",
       },
       {
-        phase: "Analysis",
-        description: "Broke down each printed form into structured data fields and identified which fields were shared vs. type-specific.",
+        phase: "Backlog & Requirement Gathering",
+        description: "Collected physical PPAP and Inspection Standard forms and continuously reprioritized which fields and features to build next as feedback came in.",
       },
       {
-        phase: "Design",
-        description: "Designed the database schema and mapped each form field to its exact coordinate position on the PDF template for injection.",
+        phase: "Iterative Design & Development",
+        description: "Designed the database and built CRUD, PDF generation, and approval features in short iterations instead of waiting for a complete upfront spec.",
       },
       {
-        phase: "Implementation",
-        description: "Developed the CodeIgniter 3 application, integrated FPDF/FPDI libraries, and built the form-to-PDF generation pipeline.",
+        phase: "Review with QC/QA",
+        description: "Reviewed each iteration with QC/QA staff, adjusting form fields, PDF layout, and approval steps based on their direct feedback.",
       },
       {
-        phase: "Testing",
-        description: "Compared generated PDF output against original paper forms for layout accuracy and validated data integrity end-to-end.",
+        phase: "Continuous Testing",
+        description: "Tested each increment — data entry, PDF output, and approval transitions — before folding it into the next iteration.",
       },
       {
-        phase: "Deployment",
-        description: "Deployed internally and rolled out to QA staff, replacing the manual paper-based inspection process.",
+        phase: "Rollout",
+        description: "Released working increments to QC/QA staff, replacing the manual paper-based process gradually rather than in one big-bang launch.",
       },
     ],
     businessFlow: [
-      "QA staff selects the inspection type (product, material, or part)",
-      "Staff fills in the inspection specification form through the web interface",
-      "System validates input and stores the data in the database",
-      "System loads the matching PDF template using FPDI",
-      "FPDF injects the stored data onto the template at the correct positions",
-      "A print-ready PDF is generated and archived digitally for future retrieval",
+      "QC/QA staff creates a new PPAP or Inspection Standard document and fills in the digitized form",
+      "System stores the data centrally in the database",
+      "Document moves through the 6-stage approval workflow: Designed and Checked by QC, then Designed, Checked, Manager, and General Manager approval by QA",
+      "Document status updates automatically as each approval stage is completed",
+      "User previews the auto-generated PDF (via FPDF/FPDI) before final approval",
+      "Every change and approval action is logged in the document's history for traceability",
     ],
     requirementAnalysis:
-      "Analyzed existing physical inspection forms across product, material, and part categories to extract required fields and layout constraints, then translated them into a digital data model and PDF injection mapping.",
+      "Analyzed the physical PPAP and Inspection Standard forms field by field, then mapped them into a digital data model along with the required 6-stage QC/QA approval sequence and change-tracking needs.",
     functionalRequirements: [
-      "Dynamic inspection specification form based on inspection type",
-      "Data validation before submission",
-      "PDF generation with data injected into a fixed template layout",
-      "Digital archive of all submitted inspection records",
-      "Search and filter of historical inspection data",
-      "Download and print of generated inspection PDF",
+      "Full CRUD for PPAP and Inspection Standard data",
+      "PDF report preview generated from stored data via FPDF/FPDI",
+      "Sequential 6-stage approval workflow (QC Designed/Checked, QA Designed/Checked/Manager/GM)",
+      "Automatic document status updates per approval stage",
+      "Change/approval history log per document",
+      "Search and retrieval of archived documents",
     ],
     nonFunctionalRequirements: [
-      "PDF generation completes within a few seconds per request",
-      "Generated PDF layout matches the original paper form precisely",
-      "Data persisted reliably with no loss during PDF injection",
+      "PDF preview renders within a few seconds of request",
+      "Generated PDF layout matches the original physical form precisely",
+      "Approval stage transitions are enforced strictly in sequence",
       "Usable on standard office desktop browsers",
     ],
-    umlDiagrams: [
-      {
-        name: "Use Case Diagram",
-        description: "QA Staff and Admin actors covering form submission, PDF generation, and record retrieval.",
-      },
-      {
-        name: "Activity Diagram",
-        description: "Flow from form input to stored data and finally to injected PDF output.",
-      },
-      {
-        name: "Sequence Diagram",
-        description: "Interaction between the form controller, database, and the FPDF/FPDI PDF generation service.",
-      },
-      {
-        name: "Class Diagram",
-        description: "Entities for InspectionForm, InspectionType, and PdfTemplate and their relationships.",
-      },
-    ],
-    erdDescription:
-      "Designed a database with tables for inspection forms, inspection types, form fields, and PDF template mappings, allowing each inspection type to define its own set of fields while reusing the same generation logic.",
+    umlDiagrams: [],
+    erdDescription: "",
     wireframeDescription:
-      "Sketched the inspection form input page and record archive listing before development, focusing on matching the field order of the original paper form to reduce user confusion.",
+      "Wireframed three core screens before development: the master table (searchable document archive), the digital form (kept close to the original physical PPAP/Inspection Standard layout), and the approval screen (6-stage QC/QA status tracker).",
     technologies: ["PHP", "CodeIgniter 3", "MySQL", "FPDF", "FPDI", "JavaScript", "Bootstrap"],
     implementation:
-      "Built with CodeIgniter 3's MVC structure. The core feature is the PDF pipeline: FPDI opens the existing PDF template as a base page, and FPDF writes the submitted form data onto that page at pre-mapped X/Y coordinates, producing a downloadable inspection report.",
+      "Built with CodeIgniter 3's MVC structure. FPDI loads the existing PDF template and FPDF writes the submitted form data onto it at pre-mapped coordinates for the preview/report. The approval workflow is modeled as a status field that advances only through its 6 defined stages, with each transition written to a history table.",
     results: [
-      "Eliminated physical paper forms for product, material, and part inspections",
-      "Generated inspection PDFs directly from stored data with consistent layout",
-      "Made historical inspection records searchable instead of filed on paper",
-      "Reduced form processing time compared to manual filling and filing",
+      "Replaced manual, paper-based PPAP and Inspection Standard creation with a centralized digital system",
+      "Standardized document approval through a structured 6-stage QC/QA workflow",
+      "Made document history and approval status fully traceable",
+      "Reduced errors and rework from inconsistent manual form-filling",
     ],
     lessonsLearned: [
       "Working with FPDI/FPDF requires precise coordinate mapping — small layout mismatches are easy to introduce",
-      "Digitizing a paper-based process works best when the digital form mirrors the original as closely as possible",
+      "An Agile, iterative approach was essential here since QC/QA requirements kept shifting mid-development",
       "Solo ownership of a project end-to-end improves speed but requires disciplined self-testing before rollout",
     ],
     gallery: [
-      { title: "Inspection Form", description: "Digital form for product/material/part specification input" },
-      { title: "Generated PDF Output", description: "Print-ready inspection report with injected data" },
-      { title: "Record Archive", description: "Searchable list of digitally stored inspection records" },
+      { title: "Master Table", description: "Searchable, filterable archive of PPAP / Inspection Standard documents", image: "/image/wireframe-master-table.png" },
+      { title: "Digital Form", description: "Data entry form kept close to the original physical layout", image: "/image/wireframe-digital-form.png" },
+      { title: "Approval", description: "6-stage QC/QA approval status tracker with history log", image: "/image/wireframe-approval.png" },
     ],
   },
   {
@@ -605,16 +587,10 @@ export const projects: Project[] = [
       "Consistent styling across all pages",
       "Fast page load with static/mock content",
     ],
-    umlDiagrams: [
-      {
-        name: "Use Case Diagram",
-        description: "Visitor actor browsing home, category, and product detail pages.",
-      },
-    ],
-    erdDescription:
-      "No backend database was implemented — this project focused solely on frontend structure and presentation using PHP includes.",
+    umlDiagrams: [],
+    erdDescription: "",
     wireframeDescription:
-      "Sketched simple layouts for the home, category, and product detail pages before implementing them with Bootstrap components.",
+      "A static frontend-only site — no backend, database, or diagrams involved. Just three wireframed pages: home, category listing, and product detail, implemented directly with Bootstrap components.",
     technologies: ["PHP", "Bootstrap", "HTML", "CSS", "JavaScript"],
     implementation:
       "Used PHP includes to share header, footer, and navigation across pages, and Bootstrap's grid and card components to build a responsive product catalog and detail layout.",
@@ -628,15 +604,15 @@ export const projects: Project[] = [
       "Planning the component structure early makes styling with Bootstrap much faster",
     ],
     gallery: [
-      { title: "Home Page", description: "Storefront landing page with featured products" },
-      { title: "Category Page", description: "Responsive product listing grid" },
-      { title: "Product Detail", description: "Individual product information layout" },
+      { title: "Home Page", description: "Storefront landing page with featured products", image: "/image/wireframe-ecom-home.png" },
+      { title: "Category Page", description: "Responsive product listing grid", image: "/image/wireframe-ecom-category.png" },
+      { title: "Product Detail", description: "Individual product information layout", image: "/image/wireframe-ecom-product.png" },
     ],
   },
   {
     slug: "news-portal-website",
     title: "News Portal Website",
-    role: "Full Stack Developer (Team Project)",
+    role: "Frontend Developer (Team Project)",
     shortDescription:
       "Laravel and MySQL news portal where visitors can read articles and manage news content through full CRUD.",
     tags: ["Laravel", "MySQL", "PHP", "CRUD"],
@@ -645,24 +621,22 @@ export const projects: Project[] = [
     businessProblem:
       "The team needed a working example of a content-driven website where news articles could be created, edited, and displayed dynamically instead of using static pages.",
     challenges: [
-      "Structuring Laravel routes, controllers, and views for a content-heavy site",
-      "Implementing full CRUD for news articles with proper validation",
-      "Coordinating frontend and backend work within the team",
+      "Structuring Laravel Blade views for a content-heavy site",
+      "Presenting full CRUD state (published/draft, categories) clearly in the views",
+      "Coordinating with the team on the data passed from controllers to the views",
       "Designing a clean reading experience for published articles",
     ],
     objectives: [
       "Allow visitors to browse and read published news articles",
-      "Allow authorized users to create, edit, and delete news articles",
-      "Structure the site with Laravel's MVC conventions",
-      "Deliver both frontend and backend as part of a team project",
+      "Present an admin CRUD area for managing news articles",
+      "Structure the views around Laravel's Blade templating conventions",
+      "Deliver the reading and admin interfaces as part of a team project",
     ],
     solution:
-      "As part of a team, built a Laravel news portal handling both the frontend reading experience and backend CRUD for managing articles, using MySQL for storage.",
+      "As part of a team, built the Laravel Blade views for the news portal — the public reading experience and the admin CRUD management screens — consuming data from the team's Laravel controllers and MySQL-backed models.",
     responsibilities: [
-      "Frontend Development",
-      "Backend Development",
-      "CRUD Implementation",
-      "Database Integration",
+      "Frontend Development (Blade Views)",
+      "UI Implementation",
       "Testing",
     ],
     sdlcProcess: [
@@ -672,15 +646,15 @@ export const projects: Project[] = [
       },
       {
         phase: "Design",
-        description: "Planned the database schema for articles and the page layout for reading and managing news.",
+        description: "Planned the page layout for reading and managing news, aligned with the team's database schema for articles.",
       },
       {
         phase: "Implementation",
-        description: "Built Laravel routes, controllers, and views for both reading and CRUD management, contributing to frontend and backend.",
+        description: "Built the Laravel Blade views for both the public reading pages and the CRUD management screens.",
       },
       {
         phase: "Testing",
-        description: "Tested CRUD operations and verified articles displayed correctly on the public-facing pages.",
+        description: "Verified articles and CRUD state displayed correctly on the public-facing and admin pages.",
       },
     ],
     businessFlow: [
@@ -702,36 +676,26 @@ export const projects: Project[] = [
       "Reliable data storage in MySQL",
       "Reasonable page load time for article listings",
     ],
-    umlDiagrams: [
-      {
-        name: "Use Case Diagram",
-        description: "Visitor and Admin actors covering reading and CRUD operations.",
-      },
-      {
-        name: "ERD",
-        description: "Schema for articles, categories, and users.",
-      },
-    ],
-    erdDescription:
-      "Designed with the team a database covering articles, categories, and users to support both public reading and CRUD management.",
+    umlDiagrams: [],
+    erdDescription: "",
     wireframeDescription:
-      "Sketched the article listing, article detail, and CRUD management pages with the team before implementation.",
-    technologies: ["Laravel", "PHP", "MySQL", "Bootstrap"],
+      "This part of the project was views-only — no diagrams involved. Wireframed three screens with the team: news listing, article detail, and the admin CRUD management page, built as Laravel Blade views.",
+    technologies: ["Laravel", "PHP", "MySQL", "Blade"],
     implementation:
-      "Built using Laravel's MVC structure, handling both the public-facing article pages (frontend) and the CRUD management logic (backend) as part of the team's development work.",
+      "Built the public-facing article pages and CRUD management screens as Laravel Blade views within the team's MVC structure, rendering data passed from controllers built by the team.",
     results: [
-      "Delivered a working news portal with public reading and full CRUD management",
-      "Contributed to both frontend and backend as part of the team",
-      "Practiced structuring a content-driven site using Laravel conventions",
+      "Delivered the reading and CRUD management views for a working news portal",
+      "Contributed the frontend/view layer as part of the team",
+      "Practiced structuring Blade views around Laravel's MVC conventions",
     ],
     lessonsLearned: [
-      "Working across both frontend and backend clarified how Laravel's MVC layers connect end-to-end",
+      "Building views around data shape decided by teammates requires early alignment on what the controllers pass down",
       "Team coordination on shared database schema prevents conflicting assumptions during development",
     ],
     gallery: [
-      { title: "News Listing", description: "Public-facing article listing page" },
-      { title: "Article Detail", description: "Individual news article reading page" },
-      { title: "CRUD Management", description: "Admin interface for managing news articles" },
+      { title: "News Listing", description: "Public-facing article listing page", image: "/image/wireframe-news-listing.png" },
+      { title: "Article Detail", description: "Individual news article reading page", image: "/image/wireframe-news-detail.png" },
+      { title: "CRUD Management", description: "Admin interface for managing news articles", image: "/image/wireframe-news-crud.png" },
     ],
   },
   {
@@ -802,20 +766,10 @@ export const projects: Project[] = [
       "Usable dashboard for monitoring multiple supply points at once",
       "Stable integration against the Go backend services",
     ],
-    umlDiagrams: [
-      {
-        name: "Use Case Diagram",
-        description: "Staff actor monitoring distribution allocation and stock data via the dashboard.",
-      },
-      {
-        name: "Sequence Diagram",
-        description: "Frontend-to-REST API interaction for fetching distribution and stock data.",
-      },
-    ],
-    erdDescription:
-      "Database and schema design were owned by the backend/API team; frontend work focused on consuming the exposed REST endpoints for supply points, distribution, and stock records.",
+    umlDiagrams: [],
+    erdDescription: "",
     wireframeDescription:
-      "Designed dashboard layouts for distribution allocation and stock monitoring in coordination with the team's API structure.",
+      "This part of the project was views-only — no diagrams involved. Wireframed the distribution allocation dashboard and stock monitoring screen in coordination with the team's API structure.",
     technologies: ["Go", "REST API", "JavaScript", "HTML", "CSS"],
     implementation:
       "Built the frontend to consume Go-based REST APIs, rendering distribution allocation per supply point and a stock monitoring dashboard, working closely with the team on API integration.",
@@ -829,8 +783,8 @@ export const projects: Project[] = [
       "Automating a previously manual, error-prone process significantly changes how staff trust and use the system",
     ],
     gallery: [
-      { title: "Distribution Dashboard", description: "Allocation view per rice supply point" },
-      { title: "Stock Monitoring", description: "Real-time stock data view via REST API" },
+      { title: "Distribution Dashboard", description: "Allocation view per rice supply point", image: "/image/wireframe-bulog-dashboard.png" },
+      { title: "Stock Monitoring", description: "Real-time stock data view via REST API", image: "/image/wireframe-bulog-stock.png" },
     ],
   },
   {
@@ -901,16 +855,10 @@ export const projects: Project[] = [
       "Responsive design across devices",
       "No disruption to existing backend services",
     ],
-    umlDiagrams: [
-      {
-        name: "Use Case Diagram",
-        description: "User actor interacting with the revamped frontend pages backed by existing APIs.",
-      },
-    ],
-    erdDescription:
-      "No database changes were made — the revamp worked entirely against the existing backend's API layer without modifying its data model.",
+    umlDiagrams: [],
+    erdDescription: "",
     wireframeDescription:
-      "Designed updated wireframes for the key pages being revamped, based on the existing site structure and available API data.",
+      "This was a views-only revamp — no diagrams involved. Wireframed the updated home page and core UI components based on the existing site structure and available API data.",
     technologies: ["Next.js", "React", "TypeScript", "REST API", "Tailwind CSS"],
     implementation:
       "Rebuilt the frontend with Next.js, fetching data from the existing backend's REST APIs and rendering it through new, modernized UI components.",
@@ -924,8 +872,8 @@ export const projects: Project[] = [
       "Next.js made it straightforward to modernize the UI while keeping the integration layer thin",
     ],
     gallery: [
-      { title: "Revamped Home Page", description: "Updated landing page UI" },
-      { title: "Updated Components", description: "Modernized UI components across key pages" },
+      { title: "Revamped Home Page", description: "Updated landing page UI", image: "/image/wireframe-jagadiri-home.png" },
+      { title: "Updated Components", description: "Modernized UI components across key pages", image: "/image/wireframe-jagadiri-components.png" },
     ],
   },
 ];
