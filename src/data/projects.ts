@@ -28,6 +28,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  /* Temporarily hidden from the site — uncomment to bring it back.
   {
     slug: "paperless-quality-assurance",
     title: "Paperless Quality Assurance System",
@@ -138,6 +139,7 @@ export const projects: Project[] = [
       { title: "Approval", description: "6-stage QC/QA approval status tracker with history log", image: "/image/wireframe-approval.png" },
     ],
   },
+  */
   {
     slug: "supplier-performance-report",
     title: "Supplier Performance Report System",
@@ -403,6 +405,273 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "bulog-rice-distribution-system",
+    title: "Bulog Rice Distribution & Monitoring System",
+    role: "Frontend Developer & API Integration (Team Project)",
+    shortDescription:
+      "System built to automate rice distribution across supply points and monitor stock data for Bulog, reducing manual distribution errors.",
+    tags: ["Go", "REST API", "Automation", "Stock Monitoring"],
+    background:
+      "Rice distribution across supply points was frequently miscalculated when handled manually, and stock data was difficult to monitor in real time, creating the need for an automated, API-driven system.",
+    businessProblem:
+      "Manual distribution planning often led to incorrect rice allocation per supply point, and there was no centralized way to monitor stock levels, making it hard to catch discrepancies early.",
+    challenges: [
+      "Working with a complex system with multiple supply points and distribution rules",
+      "Integrating the frontend with Go-based REST APIs for real-time data",
+      "Presenting distribution and stock data clearly to reduce human error",
+      "Coordinating frontend work with the backend/API team",
+    ],
+    objectives: [
+      "Automate the calculation and allocation of rice distribution per supply point",
+      "Provide real-time monitoring of rice stock data",
+      "Reduce manual errors in distribution planning",
+      "Deliver a frontend that consumes the team's Go REST APIs reliably",
+    ],
+    solution:
+      "As part of a team, contributed the frontend and API integration layer that consumes Go-based REST APIs to display and manage rice distribution allocation and stock monitoring data.",
+    responsibilities: [
+      "Frontend Development",
+      "REST API Integration",
+      "UI for Distribution & Stock Monitoring",
+      "Testing",
+    ],
+    sdlcProcess: [
+      {
+        phase: "Planning",
+        description: "Aligned with the team on the automation goal: reducing distribution errors and improving stock visibility.",
+      },
+      {
+        phase: "Design",
+        description: "Planned frontend screens for distribution allocation and stock monitoring based on the team's API contracts.",
+      },
+      {
+        phase: "Implementation",
+        description: "Built the frontend and integrated it with Go REST APIs for distribution and stock data.",
+      },
+      {
+        phase: "Testing",
+        description: "Tested API integration against real distribution scenarios and validated stock figures displayed correctly.",
+      },
+    ],
+    businessFlow: [
+      "Backend calculates rice supply allocation per supply point via Go services",
+      "Frontend requests distribution and stock data through REST APIs",
+      "System displays allocation results and current stock levels",
+      "Staff monitor stock data to catch discrepancies before they cause distribution errors",
+    ],
+    requirementAnalysis:
+      "Worked with the team to understand the distribution logic and stock monitoring needs, focusing on what data the frontend needed to fetch and display via the Go REST APIs.",
+    functionalRequirements: [
+      "Rice distribution allocation view per supply point",
+      "Real-time stock monitoring dashboard",
+      "API integration for fetching distribution and stock data",
+      "Discrepancy/alert indicators for stock irregularities",
+    ],
+    nonFunctionalRequirements: [
+      "Frontend reflects up-to-date data from the REST API",
+      "Usable dashboard for monitoring multiple supply points at once",
+      "Stable integration against the Go backend services",
+    ],
+    umlDiagrams: [],
+    erdDescription: "",
+    wireframeDescription:
+      "This part of the project was views-only — no diagrams involved. Wireframed the distribution allocation dashboard and stock monitoring screen in coordination with the team's API structure.",
+    technologies: ["Go", "REST API", "JavaScript", "HTML", "CSS"],
+    implementation:
+      "Built the frontend to consume Go-based REST APIs, rendering distribution allocation per supply point and a stock monitoring dashboard, working closely with the team on API integration.",
+    results: [
+      "Contributed to reducing manual errors in rice distribution allocation",
+      "Delivered a stock monitoring view integrated with live REST API data",
+      "Supported the team's automation goal for a complex distribution system",
+    ],
+    lessonsLearned: [
+      "Integrating a frontend with a Go REST API requires close alignment on API contracts with the backend team",
+      "Automating a previously manual, error-prone process significantly changes how staff trust and use the system",
+    ],
+    gallery: [
+      { title: "Distribution Dashboard", description: "Allocation view per rice supply point", image: "/image/wireframe-bulog-dashboard.png" },
+      { title: "Stock Monitoring", description: "Real-time stock data view via REST API", image: "/image/wireframe-bulog-stock.png" },
+    ],
+  },
+  {
+    slug: "jagadiri-website-revamp",
+    title: "Jagadiri Website Revamp",
+    role: "Frontend Developer (Individual Project)",
+    shortDescription:
+      "Frontend revamp of the Jagadiri website using Next.js, rebuilding and improving the UI while integrating with existing backend APIs.",
+    tags: ["Next.js", "REST API", "UI/UX Revamp"],
+    background:
+      "The existing Jagadiri website needed a frontend refresh to modernize its interface and improve usability, without changing the underlying backend services.",
+    businessProblem:
+      "The previous interface felt outdated and needed a cleaner, more modern presentation while continuing to work with the existing backend APIs.",
+    challenges: [
+      "Rebuilding the interface in Next.js while preserving existing functionality",
+      "Integrating with existing backend APIs without backend-side changes",
+      "Matching new UI components to existing data structures returned by the API",
+      "Maintaining feature parity with the previous version during the revamp",
+    ],
+    objectives: [
+      "Modernize the Jagadiri website's frontend UI/UX",
+      "Rebuild the interface using Next.js",
+      "Integrate seamlessly with existing backend APIs",
+      "Preserve existing functionality while improving the visual experience",
+    ],
+    solution:
+      "Solely handled the frontend revamp, rebuilding the interface in Next.js and connecting it to the existing backend by consuming its REST APIs, focused entirely on the presentation layer.",
+    responsibilities: [
+      "UI/UX Revamp",
+      "Frontend Development",
+      "API Integration",
+      "Testing",
+    ],
+    sdlcProcess: [
+      {
+        phase: "Planning",
+        description: "Reviewed the existing website to identify which pages and components needed revamping.",
+      },
+      {
+        phase: "Design",
+        description: "Designed the updated UI/UX for key pages while keeping existing API data structures in mind.",
+      },
+      {
+        phase: "Implementation",
+        description: "Rebuilt the frontend in Next.js and connected it to existing backend endpoints.",
+      },
+      {
+        phase: "Testing",
+        description: "Verified the revamped pages functioned correctly against live API responses.",
+      },
+    ],
+    businessFlow: [
+      "User visits the revamped Jagadiri website",
+      "Next.js frontend requests data from the existing backend APIs",
+      "API responses are rendered through the new UI components",
+      "User interacts with a modernized interface without any backend changes",
+    ],
+    requirementAnalysis:
+      "Focused on frontend requirements: which pages needed a visual and interaction refresh, and how the new components should map to the existing API response structures.",
+    functionalRequirements: [
+      "Revamped page layouts consuming existing API endpoints",
+      "Updated navigation and core UI components",
+      "Consistent design system across revamped pages",
+      "Preserved existing feature functionality post-revamp",
+    ],
+    nonFunctionalRequirements: [
+      "Improved perceived performance with Next.js rendering",
+      "Responsive design across devices",
+      "No disruption to existing backend services",
+    ],
+    umlDiagrams: [],
+    erdDescription: "",
+    wireframeDescription:
+      "This was a views-only revamp — no diagrams involved. Wireframed the updated home page and core UI components based on the existing site structure and available API data.",
+    technologies: ["Next.js", "React", "TypeScript", "REST API", "Tailwind CSS"],
+    implementation:
+      "Rebuilt the frontend with Next.js, fetching data from the existing backend's REST APIs and rendering it through new, modernized UI components.",
+    results: [
+      "Delivered a modernized frontend for the Jagadiri website",
+      "Maintained full functionality while integrating with the existing backend",
+      "Improved the overall visual and interaction experience of the site",
+    ],
+    lessonsLearned: [
+      "A frontend-only revamp requires carefully reading existing API responses to avoid breaking functionality",
+      "Next.js made it straightforward to modernize the UI while keeping the integration layer thin",
+    ],
+    gallery: [
+      { title: "Revamped Home Page", description: "Updated landing page UI", image: "/image/wireframe-jagadiri-home.png" },
+      { title: "Updated Components", description: "Modernized UI components across key pages", image: "/image/wireframe-jagadiri-components.png" },
+    ],
+  },
+  {
+    slug: "news-portal-website",
+    title: "News Portal Website",
+    role: "Frontend Developer (Team Project)",
+    shortDescription:
+      "Laravel and MySQL news portal where visitors can read articles and manage news content through full CRUD.",
+    tags: ["Laravel", "MySQL", "PHP", "CRUD"],
+    background:
+      "Built as a team project to create a news portal where content could be published, read, and managed through a Laravel-based CMS-style workflow.",
+    businessProblem:
+      "The team needed a working example of a content-driven website where news articles could be created, edited, and displayed dynamically instead of using static pages.",
+    challenges: [
+      "Structuring Laravel Blade views for a content-heavy site",
+      "Presenting full CRUD state (published/draft, categories) clearly in the views",
+      "Coordinating with the team on the data passed from controllers to the views",
+      "Designing a clean reading experience for published articles",
+    ],
+    objectives: [
+      "Allow visitors to browse and read published news articles",
+      "Present an admin CRUD area for managing news articles",
+      "Structure the views around Laravel's Blade templating conventions",
+      "Deliver the reading and admin interfaces as part of a team project",
+    ],
+    solution:
+      "As part of a team, built the Laravel Blade views for the news portal — the public reading experience and the admin CRUD management screens — consuming data from the team's Laravel controllers and MySQL-backed models.",
+    responsibilities: [
+      "Frontend Development (Blade Views)",
+      "UI Implementation",
+      "Testing",
+    ],
+    sdlcProcess: [
+      {
+        phase: "Planning",
+        description: "Defined the scope with the team: article reading pages and an admin CRUD area.",
+      },
+      {
+        phase: "Design",
+        description: "Planned the page layout for reading and managing news, aligned with the team's database schema for articles.",
+      },
+      {
+        phase: "Implementation",
+        description: "Built the Laravel Blade views for both the public reading pages and the CRUD management screens.",
+      },
+      {
+        phase: "Testing",
+        description: "Verified articles and CRUD state displayed correctly on the public-facing and admin pages.",
+      },
+    ],
+    businessFlow: [
+      "Admin creates a news article through the CRUD management page",
+      "Article is stored in the MySQL database",
+      "Visitor browses the news portal and opens an article to read",
+      "Admin can update or delete existing articles as needed",
+    ],
+    requirementAnalysis:
+      "Worked with the team to define the news portal's core requirements: public article reading and an authenticated CRUD interface for managing content.",
+    functionalRequirements: [
+      "Public news listing and article detail pages",
+      "Create, read, update, and delete news articles",
+      "Article categorization",
+      "Basic authentication for the content management area",
+    ],
+    nonFunctionalRequirements: [
+      "Responsive layout for article browsing",
+      "Reliable data storage in MySQL",
+      "Reasonable page load time for article listings",
+    ],
+    umlDiagrams: [],
+    erdDescription: "",
+    wireframeDescription:
+      "This part of the project was views-only — no diagrams involved. Wireframed three screens with the team: news listing, article detail, and the admin CRUD management page, built as Laravel Blade views.",
+    technologies: ["Laravel", "PHP", "MySQL", "Blade"],
+    implementation:
+      "Built the public-facing article pages and CRUD management screens as Laravel Blade views within the team's MVC structure, rendering data passed from controllers built by the team.",
+    results: [
+      "Delivered the reading and CRUD management views for a working news portal",
+      "Contributed the frontend/view layer as part of the team",
+      "Practiced structuring Blade views around Laravel's MVC conventions",
+    ],
+    lessonsLearned: [
+      "Building views around data shape decided by teammates requires early alignment on what the controllers pass down",
+      "Team coordination on shared database schema prevents conflicting assumptions during development",
+    ],
+    gallery: [
+      { title: "News Listing", description: "Public-facing article listing page", image: "/image/wireframe-news-listing.png" },
+      { title: "Article Detail", description: "Individual news article reading page", image: "/image/wireframe-news-detail.png" },
+      { title: "CRUD Management", description: "Admin interface for managing news articles", image: "/image/wireframe-news-crud.png" },
+    ],
+  },
+  {
     slug: "purchase-invoice-system",
     title: "Motor Purchase Invoice System",
     role: "Full Stack Developer (Individual Project)",
@@ -607,273 +876,6 @@ export const projects: Project[] = [
       { title: "Home Page", description: "Storefront landing page with featured products", image: "/image/wireframe-ecom-home.png" },
       { title: "Category Page", description: "Responsive product listing grid", image: "/image/wireframe-ecom-category.png" },
       { title: "Product Detail", description: "Individual product information layout", image: "/image/wireframe-ecom-product.png" },
-    ],
-  },
-  {
-    slug: "news-portal-website",
-    title: "News Portal Website",
-    role: "Frontend Developer (Team Project)",
-    shortDescription:
-      "Laravel and MySQL news portal where visitors can read articles and manage news content through full CRUD.",
-    tags: ["Laravel", "MySQL", "PHP", "CRUD"],
-    background:
-      "Built as a team project to create a news portal where content could be published, read, and managed through a Laravel-based CMS-style workflow.",
-    businessProblem:
-      "The team needed a working example of a content-driven website where news articles could be created, edited, and displayed dynamically instead of using static pages.",
-    challenges: [
-      "Structuring Laravel Blade views for a content-heavy site",
-      "Presenting full CRUD state (published/draft, categories) clearly in the views",
-      "Coordinating with the team on the data passed from controllers to the views",
-      "Designing a clean reading experience for published articles",
-    ],
-    objectives: [
-      "Allow visitors to browse and read published news articles",
-      "Present an admin CRUD area for managing news articles",
-      "Structure the views around Laravel's Blade templating conventions",
-      "Deliver the reading and admin interfaces as part of a team project",
-    ],
-    solution:
-      "As part of a team, built the Laravel Blade views for the news portal — the public reading experience and the admin CRUD management screens — consuming data from the team's Laravel controllers and MySQL-backed models.",
-    responsibilities: [
-      "Frontend Development (Blade Views)",
-      "UI Implementation",
-      "Testing",
-    ],
-    sdlcProcess: [
-      {
-        phase: "Planning",
-        description: "Defined the scope with the team: article reading pages and an admin CRUD area.",
-      },
-      {
-        phase: "Design",
-        description: "Planned the page layout for reading and managing news, aligned with the team's database schema for articles.",
-      },
-      {
-        phase: "Implementation",
-        description: "Built the Laravel Blade views for both the public reading pages and the CRUD management screens.",
-      },
-      {
-        phase: "Testing",
-        description: "Verified articles and CRUD state displayed correctly on the public-facing and admin pages.",
-      },
-    ],
-    businessFlow: [
-      "Admin creates a news article through the CRUD management page",
-      "Article is stored in the MySQL database",
-      "Visitor browses the news portal and opens an article to read",
-      "Admin can update or delete existing articles as needed",
-    ],
-    requirementAnalysis:
-      "Worked with the team to define the news portal's core requirements: public article reading and an authenticated CRUD interface for managing content.",
-    functionalRequirements: [
-      "Public news listing and article detail pages",
-      "Create, read, update, and delete news articles",
-      "Article categorization",
-      "Basic authentication for the content management area",
-    ],
-    nonFunctionalRequirements: [
-      "Responsive layout for article browsing",
-      "Reliable data storage in MySQL",
-      "Reasonable page load time for article listings",
-    ],
-    umlDiagrams: [],
-    erdDescription: "",
-    wireframeDescription:
-      "This part of the project was views-only — no diagrams involved. Wireframed three screens with the team: news listing, article detail, and the admin CRUD management page, built as Laravel Blade views.",
-    technologies: ["Laravel", "PHP", "MySQL", "Blade"],
-    implementation:
-      "Built the public-facing article pages and CRUD management screens as Laravel Blade views within the team's MVC structure, rendering data passed from controllers built by the team.",
-    results: [
-      "Delivered the reading and CRUD management views for a working news portal",
-      "Contributed the frontend/view layer as part of the team",
-      "Practiced structuring Blade views around Laravel's MVC conventions",
-    ],
-    lessonsLearned: [
-      "Building views around data shape decided by teammates requires early alignment on what the controllers pass down",
-      "Team coordination on shared database schema prevents conflicting assumptions during development",
-    ],
-    gallery: [
-      { title: "News Listing", description: "Public-facing article listing page", image: "/image/wireframe-news-listing.png" },
-      { title: "Article Detail", description: "Individual news article reading page", image: "/image/wireframe-news-detail.png" },
-      { title: "CRUD Management", description: "Admin interface for managing news articles", image: "/image/wireframe-news-crud.png" },
-    ],
-  },
-  {
-    slug: "bulog-rice-distribution-system",
-    title: "Bulog Rice Distribution & Monitoring System",
-    role: "Frontend Developer & API Integration (Team Project)",
-    shortDescription:
-      "System built to automate rice distribution across supply points and monitor stock data for Bulog, reducing manual distribution errors.",
-    tags: ["Go", "REST API", "Automation", "Stock Monitoring"],
-    background:
-      "Rice distribution across supply points was frequently miscalculated when handled manually, and stock data was difficult to monitor in real time, creating the need for an automated, API-driven system.",
-    businessProblem:
-      "Manual distribution planning often led to incorrect rice allocation per supply point, and there was no centralized way to monitor stock levels, making it hard to catch discrepancies early.",
-    challenges: [
-      "Working with a complex system with multiple supply points and distribution rules",
-      "Integrating the frontend with Go-based REST APIs for real-time data",
-      "Presenting distribution and stock data clearly to reduce human error",
-      "Coordinating frontend work with the backend/API team",
-    ],
-    objectives: [
-      "Automate the calculation and allocation of rice distribution per supply point",
-      "Provide real-time monitoring of rice stock data",
-      "Reduce manual errors in distribution planning",
-      "Deliver a frontend that consumes the team's Go REST APIs reliably",
-    ],
-    solution:
-      "As part of a team, contributed the frontend and API integration layer that consumes Go-based REST APIs to display and manage rice distribution allocation and stock monitoring data.",
-    responsibilities: [
-      "Frontend Development",
-      "REST API Integration",
-      "UI for Distribution & Stock Monitoring",
-      "Testing",
-    ],
-    sdlcProcess: [
-      {
-        phase: "Planning",
-        description: "Aligned with the team on the automation goal: reducing distribution errors and improving stock visibility.",
-      },
-      {
-        phase: "Design",
-        description: "Planned frontend screens for distribution allocation and stock monitoring based on the team's API contracts.",
-      },
-      {
-        phase: "Implementation",
-        description: "Built the frontend and integrated it with Go REST APIs for distribution and stock data.",
-      },
-      {
-        phase: "Testing",
-        description: "Tested API integration against real distribution scenarios and validated stock figures displayed correctly.",
-      },
-    ],
-    businessFlow: [
-      "Backend calculates rice supply allocation per supply point via Go services",
-      "Frontend requests distribution and stock data through REST APIs",
-      "System displays allocation results and current stock levels",
-      "Staff monitor stock data to catch discrepancies before they cause distribution errors",
-    ],
-    requirementAnalysis:
-      "Worked with the team to understand the distribution logic and stock monitoring needs, focusing on what data the frontend needed to fetch and display via the Go REST APIs.",
-    functionalRequirements: [
-      "Rice distribution allocation view per supply point",
-      "Real-time stock monitoring dashboard",
-      "API integration for fetching distribution and stock data",
-      "Discrepancy/alert indicators for stock irregularities",
-    ],
-    nonFunctionalRequirements: [
-      "Frontend reflects up-to-date data from the REST API",
-      "Usable dashboard for monitoring multiple supply points at once",
-      "Stable integration against the Go backend services",
-    ],
-    umlDiagrams: [],
-    erdDescription: "",
-    wireframeDescription:
-      "This part of the project was views-only — no diagrams involved. Wireframed the distribution allocation dashboard and stock monitoring screen in coordination with the team's API structure.",
-    technologies: ["Go", "REST API", "JavaScript", "HTML", "CSS"],
-    implementation:
-      "Built the frontend to consume Go-based REST APIs, rendering distribution allocation per supply point and a stock monitoring dashboard, working closely with the team on API integration.",
-    results: [
-      "Contributed to reducing manual errors in rice distribution allocation",
-      "Delivered a stock monitoring view integrated with live REST API data",
-      "Supported the team's automation goal for a complex distribution system",
-    ],
-    lessonsLearned: [
-      "Integrating a frontend with a Go REST API requires close alignment on API contracts with the backend team",
-      "Automating a previously manual, error-prone process significantly changes how staff trust and use the system",
-    ],
-    gallery: [
-      { title: "Distribution Dashboard", description: "Allocation view per rice supply point", image: "/image/wireframe-bulog-dashboard.png" },
-      { title: "Stock Monitoring", description: "Real-time stock data view via REST API", image: "/image/wireframe-bulog-stock.png" },
-    ],
-  },
-  {
-    slug: "jagadiri-website-revamp",
-    title: "Jagadiri Website Revamp",
-    role: "Frontend Developer (Individual Project)",
-    shortDescription:
-      "Frontend revamp of the Jagadiri website using Next.js, rebuilding and improving the UI while integrating with existing backend APIs.",
-    tags: ["Next.js", "REST API", "UI/UX Revamp"],
-    background:
-      "The existing Jagadiri website needed a frontend refresh to modernize its interface and improve usability, without changing the underlying backend services.",
-    businessProblem:
-      "The previous interface felt outdated and needed a cleaner, more modern presentation while continuing to work with the existing backend APIs.",
-    challenges: [
-      "Rebuilding the interface in Next.js while preserving existing functionality",
-      "Integrating with existing backend APIs without backend-side changes",
-      "Matching new UI components to existing data structures returned by the API",
-      "Maintaining feature parity with the previous version during the revamp",
-    ],
-    objectives: [
-      "Modernize the Jagadiri website's frontend UI/UX",
-      "Rebuild the interface using Next.js",
-      "Integrate seamlessly with existing backend APIs",
-      "Preserve existing functionality while improving the visual experience",
-    ],
-    solution:
-      "Solely handled the frontend revamp, rebuilding the interface in Next.js and connecting it to the existing backend by consuming its REST APIs, focused entirely on the presentation layer.",
-    responsibilities: [
-      "UI/UX Revamp",
-      "Frontend Development",
-      "API Integration",
-      "Testing",
-    ],
-    sdlcProcess: [
-      {
-        phase: "Planning",
-        description: "Reviewed the existing website to identify which pages and components needed revamping.",
-      },
-      {
-        phase: "Design",
-        description: "Designed the updated UI/UX for key pages while keeping existing API data structures in mind.",
-      },
-      {
-        phase: "Implementation",
-        description: "Rebuilt the frontend in Next.js and connected it to existing backend endpoints.",
-      },
-      {
-        phase: "Testing",
-        description: "Verified the revamped pages functioned correctly against live API responses.",
-      },
-    ],
-    businessFlow: [
-      "User visits the revamped Jagadiri website",
-      "Next.js frontend requests data from the existing backend APIs",
-      "API responses are rendered through the new UI components",
-      "User interacts with a modernized interface without any backend changes",
-    ],
-    requirementAnalysis:
-      "Focused on frontend requirements: which pages needed a visual and interaction refresh, and how the new components should map to the existing API response structures.",
-    functionalRequirements: [
-      "Revamped page layouts consuming existing API endpoints",
-      "Updated navigation and core UI components",
-      "Consistent design system across revamped pages",
-      "Preserved existing feature functionality post-revamp",
-    ],
-    nonFunctionalRequirements: [
-      "Improved perceived performance with Next.js rendering",
-      "Responsive design across devices",
-      "No disruption to existing backend services",
-    ],
-    umlDiagrams: [],
-    erdDescription: "",
-    wireframeDescription:
-      "This was a views-only revamp — no diagrams involved. Wireframed the updated home page and core UI components based on the existing site structure and available API data.",
-    technologies: ["Next.js", "React", "TypeScript", "REST API", "Tailwind CSS"],
-    implementation:
-      "Rebuilt the frontend with Next.js, fetching data from the existing backend's REST APIs and rendering it through new, modernized UI components.",
-    results: [
-      "Delivered a modernized frontend for the Jagadiri website",
-      "Maintained full functionality while integrating with the existing backend",
-      "Improved the overall visual and interaction experience of the site",
-    ],
-    lessonsLearned: [
-      "A frontend-only revamp requires carefully reading existing API responses to avoid breaking functionality",
-      "Next.js made it straightforward to modernize the UI while keeping the integration layer thin",
-    ],
-    gallery: [
-      { title: "Revamped Home Page", description: "Updated landing page UI", image: "/image/wireframe-jagadiri-home.png" },
-      { title: "Updated Components", description: "Modernized UI components across key pages", image: "/image/wireframe-jagadiri-components.png" },
     ],
   },
 ];
