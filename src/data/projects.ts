@@ -1,3 +1,5 @@
+export type DeviceType = "desktop" | "phone";
+
 export interface Project {
   slug: string;
   title: string;
@@ -5,6 +7,15 @@ export interface Project {
   duration?: string;
   shortDescription: string;
   tags: string[];
+  /** Main visual shown in the showcase. Falls back to the first gallery image. */
+  cover?: string;
+  /**
+   * Public repository URL. Leave undefined when the repo isn't public —
+   * the GitHub link is simply not rendered in that case.
+   */
+  github?: string;
+  /** Only projects that actually have UML/ERD diagrams render a System Design block. */
+  hasSystemDesign?: boolean;
   background: string;
   businessProblem: string;
   challenges: string[];
@@ -24,7 +35,13 @@ export interface Project {
   implementation: string;
   results: string[];
   lessonsLearned: string[];
-  gallery: { title: string; description: string; image?: string }[];
+  gallery: {
+    title: string;
+    description: string;
+    image?: string;
+    /** Mockup the screenshot is framed in. Defaults to a desktop monitor. */
+    device?: DeviceType;
+  }[];
 }
 
 export const projects: Project[] = [
@@ -134,9 +151,9 @@ export const projects: Project[] = [
       "Solo ownership of a project end-to-end improves speed but requires disciplined self-testing before rollout",
     ],
     gallery: [
-      { title: "Master Table", description: "Searchable, filterable archive of PPAP / Inspection Standard documents", image: "/image/wireframe-master-table.png" },
-      { title: "Digital Form", description: "Data entry form kept close to the original physical layout", image: "/image/wireframe-digital-form.png" },
-      { title: "Approval", description: "6-stage QC/QA approval status tracker with history log", image: "/image/wireframe-approval.png" },
+      { title: "Master Table", description: "Searchable, filterable archive of PPAP / Inspection Standard documents" },
+      { title: "Digital Form", description: "Data entry form kept close to the original physical layout" },
+      { title: "Approval", description: "6-stage QC/QA approval status tracker with history log" },
     ],
   },
   */
@@ -148,6 +165,8 @@ export const projects: Project[] = [
     shortDescription:
       "Enterprise system that automatically scores supplier performance using predefined formulas and emails the resulting report with attachments directly to each supplier.",
     tags: ["PHP", "CodeIgniter 3", "MySQL", "Email Automation"],
+    github: "https://github.com/elvinaapww/Supplier-performance-system",
+    hasSystemDesign: true,
     background:
       "Procurement needed a way to evaluate supplier performance consistently instead of relying on scattered spreadsheets and manually calculated scores that were slow to compile and distribute.",
     businessProblem:
@@ -229,27 +248,27 @@ export const projects: Project[] = [
       {
         name: "Use Case Diagram",
         description: "Defined actors: Admin, Procurement Staff, and Manager with 15 use cases.",
-        image: "/image/porto-usecase-spr.png",
+        image: "/image/spr/diagram/porto-usecase-spr.png",
       },
       {
         name: "Activity Diagram",
         description: "Mapped supplier evaluation workflow from data input to email report delivery.",
-        image: "/image/activity-portofolio-spr.png",
+        image: "/image/spr/diagram/activity-portofolio-spr.png",
       },
       {
         name: "Sequence Diagram",
         description: "Illustrated score calculation and report-email process between UI, controller, and database layers.",
-        image: "/image/sequence-portofolio-spr.png",
+        image: "/image/spr/diagram/sequence-portofolio-spr.png",
       },
       {
         name: "Class Diagram",
         description: "Defined entity relationships for Supplier, Criteria, Score, and Report classes.",
-        image: "/image/class-portofolio-spr.png",
+        image: "/image/spr/diagram/class-portofolio-spr.png",
       },
     ],
     erdDescription:
       "Designed a normalized database with tables for suppliers, scoring criteria, scores, and report logs, so historical scores and sent reports remain traceable over time.",
-    erdImage: "/image/erd-portofolio-spr.png",
+    erdImage: "/image/spr/diagram/erd-portofolio-spr.png",
     wireframeDescription:
       "Created wireframes for the dashboard, data entry forms, and report preview before development began.",
     technologies: ["PHP", "CodeIgniter 3", "JavaScript", "MySQL", "Bootstrap", "Chart.js", "PHPMailer"],
@@ -270,17 +289,17 @@ export const projects: Project[] = [
       {
         title: "Dashboard Overview",
         description: "KPI dashboard with supplier performance scores",
-        image: "/image/dashboard-spr.png",
+        image: "/image/spr/tampilan/dashboard-spr.png",
       },
       {
         title: "Data Entry Form",
         description: "Supplier evaluation data input interface",
-        image: "/image/data-master-spr.png",
+        image: "/image/spr/tampilan/data-master-spr.png",
       },
       {
         title: "Report Generation",
         description: "Automated PDF report emailed as an attachment to suppliers",
-        image: "/image/report-spr.png",
+        image: "/image/spr/tampilan/report-spr.png",
       },
     ],
   },
@@ -292,6 +311,8 @@ export const projects: Project[] = [
     shortDescription:
       "Laravel-based inventory system for Bahari Motor Service to manage vehicle spare parts, track stock in/out, and support purchasing decisions through trend analysis.",
     tags: ["Laravel", "MySQL", "Business Analysis", "Inventory"],
+    github: "https://github.com/elvinaapww/Vehicle-SpareParts-Inventory",
+    hasSystemDesign: true,
     background:
       "Bahari Motor Service managed spare parts inventory manually, causing frequent stock discrepancies and delays when critical parts were unavailable during vehicle servicing.",
     businessProblem:
@@ -399,9 +420,10 @@ export const projects: Project[] = [
       "Being the analyst on a team project means translating business needs precisely so developers build the right thing",
     ],
     gallery: [
-      { title: "Inventory Dashboard", description: "Real-time spare parts stock overview" },
-      { title: "Transaction Form", description: "Stock in/out recording interface" },
-      { title: "Trend Report", description: "Usage trend view supporting purchase decisions" },
+      { title: "Landing Page", description: "Public page introducing the warehouse system and its main features", image: "/image/vehicle/landing.png" },
+      { title: "Sign In", description: "Staff login for the inventory system", image: "/image/vehicle/login.png" },
+      { title: "Dashboard", description: "Stock, rack, and mechanic totals with low-stock and recent-transaction panels", image: "/image/vehicle/dashboard.png" },
+      { title: "Spare Parts Stock", description: "Parts master data with code, category, brand, rack location, and price", image: "/image/vehicle/stock-list.png" },
     ],
   },
   {
@@ -489,8 +511,10 @@ export const projects: Project[] = [
       "Automating a previously manual, error-prone process significantly changes how staff trust and use the system",
     ],
     gallery: [
-      { title: "Distribution Dashboard", description: "Allocation view per rice supply point", image: "/image/wireframe-bulog-dashboard.png" },
-      { title: "Stock Monitoring", description: "Real-time stock data view via REST API", image: "/image/wireframe-bulog-stock.png" },
+      { title: "Sign In", description: "Login page of the Rice Distribution & Monitoring System", image: "/image/bulog/login.png" },
+      { title: "Create Employee Data", description: "Two-step form for registering new recipient data per supply point", image: "/image/bulog/create-employee.png" },
+      { title: "Edit Employee Data", description: "Editing a record with its supply point, regency, and district", image: "/image/bulog/edit-employee.png" },
+      { title: "Employee Detail", description: "Detail view showing recipient data and allocated ration", image: "/image/bulog/employee-detail.png" },
     ],
   },
   {
@@ -578,8 +602,8 @@ export const projects: Project[] = [
       "Next.js made it straightforward to modernize the UI while keeping the integration layer thin",
     ],
     gallery: [
-      { title: "Revamped Home Page", description: "Updated landing page UI", image: "/image/wireframe-jagadiri-home.png" },
-      { title: "Updated Components", description: "Modernized UI components across key pages", image: "/image/wireframe-jagadiri-components.png" },
+      { title: "Revamped Home Page", description: "Updated landing page UI" },
+      { title: "Updated Components", description: "Modernized UI components across key pages" },
     ],
   },
   {
@@ -589,6 +613,7 @@ export const projects: Project[] = [
     shortDescription:
       "Laravel and MySQL news portal where visitors can read articles and manage news content through full CRUD.",
     tags: ["Laravel", "MySQL", "PHP", "CRUD"],
+    github: "https://github.com/elvinaapww/News-Portal-Website",
     background:
       "Built as a team project to create a news portal where content could be published, read, and managed through a Laravel-based CMS-style workflow.",
     businessProblem:
@@ -666,9 +691,13 @@ export const projects: Project[] = [
       "Team coordination on shared database schema prevents conflicting assumptions during development",
     ],
     gallery: [
-      { title: "News Listing", description: "Public-facing article listing page", image: "/image/wireframe-news-listing.png" },
-      { title: "Article Detail", description: "Individual news article reading page", image: "/image/wireframe-news-detail.png" },
-      { title: "CRUD Management", description: "Admin interface for managing news articles", image: "/image/wireframe-news-crud.png" },
+      { title: "Home Page", description: "Landing page introducing the portal and linking to popular news", image: "/image/news_portal/home.png" },
+      { title: "Popular News", description: "Article list with author, publish date, and comment count", image: "/image/news_portal/popular-news.png" },
+      { title: "Article Detail", description: "Full article with its comment form", image: "/image/news_portal/article-detail.png" },
+      { title: "Article Comments", description: "Reader comments posted under an article", image: "/image/news_portal/article-comment.png" },
+      { title: "Publish News", description: "Form for writing and publishing a new article", image: "/image/news_portal/create-news.png" },
+      { title: "Login", description: "Reader and author sign-in page", image: "/image/news_portal/login.png" },
+      { title: "Register", description: "New account registration page", image: "/image/news_portal/register.png" },
     ],
   },
   {
@@ -679,6 +708,8 @@ export const projects: Project[] = [
     shortDescription:
       "A dynamic PHP and MySQL web system with full CRUD that outputs a purchase invoice printing transaction records exactly as stored in the database.",
     tags: ["PHP", "MySQL", "Web Development", "CRUD", "Invoice System"],
+    github: "https://github.com/elvinaapww/Purchase-Invoice-System",
+    hasSystemDesign: true,
     background:
       "As part of an academic project, a web-based information system was required to demonstrate dynamic website design principles — connecting a PHP frontend with a MySQL database to manage and display transactional data.",
     businessProblem:
@@ -782,9 +813,14 @@ export const projects: Project[] = [
       "Testing print output against database records ensures data accuracy",
     ],
     gallery: [
-      { title: "Transaction Form", description: "Purchase data input interface" },
-      { title: "Invoice Output", description: "Printable purchase invoice from database" },
-      { title: "Transaction List", description: "Stored records retrieved from MySQL with CRUD actions" },
+      { title: "Sign In", description: "Account login for the dealer system", image: "/image/motor_purchase/login.png" },
+      { title: "Dashboard", description: "Record counts per module with shortcuts to the main menus", image: "/image/motor_purchase/dashboard.png" },
+      { title: "Invoice List", description: "Invoice table with search and detail, edit, and delete actions", image: "/image/motor_purchase/invoice-list.png" },
+      { title: "Create Invoice", description: "Form for a new invoice: date, number, customer, vehicle type, staff, and equipment", image: "/image/motor_purchase/create-invoice.png" },
+      { title: "Edit Invoice", description: "Editing a stored invoice record", image: "/image/motor_purchase/edit-invoice.png" },
+      { title: "Invoice Detail", description: "Invoice data with its line items and a print action", image: "/image/motor_purchase/invoice-detail.png" },
+      { title: "Printable Invoice", description: "Vehicle handover document generated from the stored record", image: "/image/motor_purchase/invoice-print.png" },
+      { title: "Print Preview", description: "Invoice output sent to print or saved as PDF", image: "/image/motor_purchase/print-preview.png" },
     ],
   },
   {
@@ -794,6 +830,7 @@ export const projects: Project[] = [
     shortDescription:
       "Frontend-only e-commerce website for an electronics store, built with PHP and Bootstrap to present product catalog and store pages.",
     tags: ["PHP", "Bootstrap", "HTML", "CSS", "Frontend"],
+    github: "https://github.com/elvinaapww/Electronics-E-commerce-Website",
     background:
       "Built as a frontend-focused practice project to design and implement the customer-facing pages of an electronics e-commerce store.",
     businessProblem:
@@ -873,13 +910,63 @@ export const projects: Project[] = [
       "Planning the component structure early makes styling with Bootstrap much faster",
     ],
     gallery: [
-      { title: "Home Page", description: "Storefront landing page with featured products", image: "/image/wireframe-ecom-home.png" },
-      { title: "Category Page", description: "Responsive product listing grid", image: "/image/wireframe-ecom-category.png" },
-      { title: "Product Detail", description: "Individual product information layout", image: "/image/wireframe-ecom-product.png" },
+      { title: "Storefront Home", description: "Landing page with promo carousel and category sidebar", image: "/image/electronic_ecommerce/home.png" },
+      { title: "Product Catalog", description: "Product grid with pricing and add-to-cart actions", image: "/image/electronic_ecommerce/product-catalog.png" },
+      { title: "Shopping Cart", description: "Cart page with quantity controls, coupon field, and order summary", image: "/image/electronic_ecommerce/cart.png" },
+      { title: "Sign In", description: "Customer sign-in page", image: "/image/electronic_ecommerce/login.png" },
+      { title: "Signed-in Home", description: "Storefront as seen by a signed-in customer", image: "/image/electronic_ecommerce/home-signed-in.png" },
     ],
   },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
+}
+
+/** Main visual for a project: explicit cover, else the first gallery image. */
+export function getProjectCover(project: Project): string | undefined {
+  return project.cover ?? project.gallery.find((item) => item.image)?.image;
+}
+
+export interface ProjectVisualItem {
+  src: string;
+  title: string;
+  description: string;
+  device?: DeviceType;
+}
+
+/** Every screenshot a project has, cover first — shown as one slideshow. */
+export function getProjectVisuals(project: Project): ProjectVisualItem[] {
+  const items = project.gallery
+    .filter((item) => item.image)
+    .map((item) => ({
+      src: item.image as string,
+      title: item.title,
+      description: item.description,
+      device: item.device,
+    }));
+
+  const cover = getProjectCover(project);
+  const coverIndex = items.findIndex((item) => item.src === cover);
+  if (coverIndex > 0) items.unshift(items.splice(coverIndex, 1)[0]);
+
+  return items;
+}
+
+/** Diagrams a project actually has — empty for projects without system design. */
+export function getProjectDiagrams(project: Project) {
+  if (!project.hasSystemDesign) return [];
+  const diagrams = project.umlDiagrams.map((uml) => ({
+    name: uml.name,
+    description: uml.description,
+    image: uml.image,
+  }));
+  if (project.erdImage) {
+    diagrams.push({
+      name: "ERD",
+      description: "Database schema",
+      image: project.erdImage,
+    });
+  }
+  return diagrams;
 }
