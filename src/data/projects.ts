@@ -16,25 +16,30 @@ export interface Project {
   github?: string;
   /** Only projects that actually have UML/ERD diagrams render a System Design block. */
   hasSystemDesign?: boolean;
-  background: string;
-  businessProblem: string;
-  challenges: string[];
-  objectives: string[];
-  solution: string;
-  responsibilities: string[];
-  sdlcProcess: { phase: string; description: string }[];
-  businessFlow: string[];
-  requirementAnalysis: string;
-  functionalRequirements: string[];
-  nonFunctionalRequirements: string[];
-  umlDiagrams: { name: string; description: string; image?: string }[];
-  erdDescription: string;
-  erdImage?: string;
-  wireframeDescription: string;
   technologies: string[];
-  implementation: string;
-  results: string[];
-  lessonsLearned: string[];
+  /** Diagrams, only rendered when hasSystemDesign is set. */
+  umlDiagrams?: { name: string; description: string; image?: string }[];
+  erdImage?: string;
+  /**
+   * Written case-study material kept from the long-form version of this site.
+   * None of it is rendered any more, so new projects can leave it out.
+   */
+  background?: string;
+  businessProblem?: string;
+  challenges?: string[];
+  objectives?: string[];
+  solution?: string;
+  responsibilities?: string[];
+  sdlcProcess?: { phase: string; description: string }[];
+  businessFlow?: string[];
+  requirementAnalysis?: string;
+  functionalRequirements?: string[];
+  nonFunctionalRequirements?: string[];
+  erdDescription?: string;
+  wireframeDescription?: string;
+  implementation?: string;
+  results?: string[];
+  lessonsLearned?: string[];
   gallery: {
     title: string;
     description: string;
@@ -157,6 +162,25 @@ export const projects: Project[] = [
     ],
   },
   */
+  {
+    slug: "postbox-api-client",
+    title: "PostBox — API Client",
+    role: "Frontend Developer",
+    shortDescription:
+      "Postman-style API client for sending and saving REST requests, with workspaces, collections, environment variables, and role-based team access. Built end to end in Go — frontend and backend.",
+    tags: ["Go", "REST API", "API Testing"],
+    technologies: ["Go", "REST API"],
+    gallery: [
+      { title: "Request Workspace", description: "Collection sidebar, request editor, and a response panel showing status, time, and size", image: "/image/postbox/request-workspace.png" },
+      { title: "New Request", description: "Creating a request inside a collection with its HTTP method", image: "/image/postbox/new-request.png" },
+      { title: "New Collection", description: "New collection with optional list, create, edit, detail, and remove request templates", image: "/image/postbox/new-collection.png" },
+      { title: "Set Variables", description: "Per-application variables, with the Bearer prefix locked on the access token", image: "/image/postbox/set-variables.png" },
+      { title: "Workspace Management", description: "Workspaces registered with their environment name and base URL", image: "/image/postbox/workspace-management.png" },
+      { title: "User Management", description: "Adding a user with a role and the workspaces they can access", image: "/image/postbox/user-management.png" },
+      { title: "Role Management", description: "Roles with per-feature menu permissions", image: "/image/postbox/role-management.png" },
+      { title: "Log In", description: "Account sign-in page", image: "/image/postbox/login.png" },
+    ],
+  },
   {
     slug: "supplier-performance-report",
     title: "Supplier Performance Report System",
@@ -518,92 +542,35 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "jagadiri-website-revamp",
-    title: "Jagadiri Website Revamp",
+    slug: "insurance-website-revamp",
+    title: "Insurance Website Revamp",
     role: "Frontend Developer (Individual Project)",
     shortDescription:
-      "Frontend revamp of the Jagadiri website using Next.js, rebuilding and improving the UI while integrating with existing backend APIs.",
+      "Frontend revamp of an insurance company website in Next.js — the product page and its four-step premium calculator — rebuilt against the existing backend APIs.",
     tags: ["Next.js", "REST API", "UI/UX Revamp"],
-    background:
-      "The existing Jagadiri website needed a frontend refresh to modernize its interface and improve usability, without changing the underlying backend services.",
-    businessProblem:
-      "The previous interface felt outdated and needed a cleaner, more modern presentation while continuing to work with the existing backend APIs.",
-    challenges: [
-      "Rebuilding the interface in Next.js while preserving existing functionality",
-      "Integrating with existing backend APIs without backend-side changes",
-      "Matching new UI components to existing data structures returned by the API",
-      "Maintaining feature parity with the previous version during the revamp",
-    ],
-    objectives: [
-      "Modernize the Jagadiri website's frontend UI/UX",
-      "Rebuild the interface using Next.js",
-      "Integrate seamlessly with existing backend APIs",
-      "Preserve existing functionality while improving the visual experience",
-    ],
-    solution:
-      "Solely handled the frontend revamp, rebuilding the interface in Next.js and connecting it to the existing backend by consuming its REST APIs, focused entirely on the presentation layer.",
-    responsibilities: [
-      "UI/UX Revamp",
-      "Frontend Development",
-      "API Integration",
-      "Testing",
-    ],
-    sdlcProcess: [
-      {
-        phase: "Planning",
-        description: "Reviewed the existing website to identify which pages and components needed revamping.",
-      },
-      {
-        phase: "Design",
-        description: "Designed the updated UI/UX for key pages while keeping existing API data structures in mind.",
-      },
-      {
-        phase: "Implementation",
-        description: "Rebuilt the frontend in Next.js and connected it to existing backend endpoints.",
-      },
-      {
-        phase: "Testing",
-        description: "Verified the revamped pages functioned correctly against live API responses.",
-      },
-    ],
-    businessFlow: [
-      "User visits the revamped Jagadiri website",
-      "Next.js frontend requests data from the existing backend APIs",
-      "API responses are rendered through the new UI components",
-      "User interacts with a modernized interface without any backend changes",
-    ],
-    requirementAnalysis:
-      "Focused on frontend requirements: which pages needed a visual and interaction refresh, and how the new components should map to the existing API response structures.",
-    functionalRequirements: [
-      "Revamped page layouts consuming existing API endpoints",
-      "Updated navigation and core UI components",
-      "Consistent design system across revamped pages",
-      "Preserved existing feature functionality post-revamp",
-    ],
-    nonFunctionalRequirements: [
-      "Improved perceived performance with Next.js rendering",
-      "Responsive design across devices",
-      "No disruption to existing backend services",
-    ],
-    umlDiagrams: [],
-    erdDescription: "",
-    wireframeDescription:
-      "This was a views-only revamp — no diagrams involved. Wireframed the updated home page and core UI components based on the existing site structure and available API data.",
     technologies: ["Next.js", "React", "TypeScript", "REST API", "Tailwind CSS"],
-    implementation:
-      "Rebuilt the frontend with Next.js, fetching data from the existing backend's REST APIs and rendering it through new, modernized UI components.",
-    results: [
-      "Delivered a modernized frontend for the Jagadiri website",
-      "Maintained full functionality while integrating with the existing backend",
-      "Improved the overall visual and interaction experience of the site",
-    ],
-    lessonsLearned: [
-      "A frontend-only revamp requires carefully reading existing API responses to avoid breaking functionality",
-      "Next.js made it straightforward to modernize the UI while keeping the integration layer thin",
-    ],
     gallery: [
-      { title: "Revamped Home Page", description: "Updated landing page UI" },
-      { title: "Updated Components", description: "Modernized UI components across key pages" },
+      { title: "Product Page", description: "Product landing page with the premium calculator alongside it", image: "/image/insurance/product-page.png" },
+      { title: "Premium Calculator — Step 1", description: "Personal details and coverage amount used to price the plan", image: "/image/insurance/premium-step-1.png" },
+      { title: "Step 2 — Benefits", description: "Calculated monthly and yearly premium with the annual saving", image: "/image/insurance/premium-step-2.png" },
+      { title: "Step 3 — Personal Data", description: "Identity and address form with the optional add-ons", image: "/image/insurance/premium-step-3.png" },
+      { title: "Health Declaration", description: "Health statement the applicant confirms before continuing", image: "/image/insurance/health-declaration.png" },
+      { title: "Step 4 — Ready", description: "Confirmation step leading into payment", image: "/image/insurance/premium-step-4.png" },
+    ],
+  },
+  {
+    slug: "laravel-website-migration",
+    title: "Laravel Website Migration",
+    role: "Full Stack Developer (Individual Project)",
+    shortDescription:
+      "Re-developed an existing client website on Laravel with a Vite-powered frontend, rebuilding it screen for screen so the design stayed exactly the same on the new stack.",
+    tags: ["Laravel", "Vite", "PHP"],
+    technologies: ["Laravel", "PHP", "Vite"],
+    gallery: [
+      { title: "Home Page", description: "Landing page with the event highlights and figures", image: "/image/octf/home.png" },
+      { title: "Why Visit", description: "Value proposition page with the visitor benefit cards", image: "/image/octf/why-visit.png" },
+      { title: "Visitor Registration", description: "Registration form with country code, company, and industry fields", image: "/image/octf/visitor-registration.png" },
+      { title: "Subscribe Form", description: "Subscription form above the site footer", image: "/image/octf/subscribe-form.png" },
     ],
   },
   {
@@ -956,7 +923,7 @@ export function getProjectVisuals(project: Project): ProjectVisualItem[] {
 /** Diagrams a project actually has — empty for projects without system design. */
 export function getProjectDiagrams(project: Project) {
   if (!project.hasSystemDesign) return [];
-  const diagrams = project.umlDiagrams.map((uml) => ({
+  const diagrams = (project.umlDiagrams ?? []).map((uml) => ({
     name: uml.name,
     description: uml.description,
     image: uml.image,

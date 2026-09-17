@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Elvina Pramesti Wiraswati",
   shortName: "Elvina",
-  title: "Elvina's Portfolio",
+  title: "Elvina-Portfolio",
   description:
     "Fresh graduate in Information Systems with hands-on experience building web applications, from requirement analysis and system design to frontend and backend development.",
   url: "https://el-s-portofolio.vercel.app",
@@ -23,5 +23,6 @@ export const navItems = [
 ] as const;
 
 export const headlines = [
-  "Fullstack Web Developer",
+  "System Engineer",
+  "Web Developer",
 ] as const;
