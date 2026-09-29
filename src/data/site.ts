@@ -10,7 +10,7 @@ export const siteConfig = {
   github: "https://github.com/elvinaapww",
   whatsapp: "https://wa.me/6285882448216",
   location: "Bekasi, Indonesia",
-  resumeUrl: "https://drive.google.com/file/d/131RLYeAiwvl_DML42KKy3mPlOGPRD4P1/view?usp=sharing",
+  resumeUrl: "https://drive.google.com/drive/folders/1kyDCNIERqc7PHyRjHW4mXcY5PfZ1qpBm?usp=sharing",
   ogImage: "/og-image.png",
 };
 
